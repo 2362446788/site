@@ -1,0 +1,21 @@
+root = true
+
+[*]
+# 统一使用 UTF-8 编码
+charset = utf-8
+# 统一使用 LF 换行
+end_of_line = lf
+# 使用空格缩进
+indent_style = space
+# 默认缩进宽度为 2
+indent_size = 2
+# tab 显示宽度也按 2 处理
+tab_width = 2
+# 文件结尾保留一个空行
+insert_final_newline = true
+# 去掉行尾多余空白
+trim_trailing_whitespace = true
+
+[*.md]
+# Markdown 保留行尾空格，避免影响手动换行语义
+trim_trailing_whitespace = false
