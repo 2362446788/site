@@ -1,5 +1,7 @@
-import { BookOpen, Coffee, Sprout } from 'lucide-react';
+import { BookOpen, Coffee, Mail, Sprout, UserRound } from 'lucide-react';
+import { GithubMark } from '@/components/icons/github-mark';
 import type {
+  FooterVisibilityConfig,
   MomentItem,
   NavItem,
   ProjectItem,
@@ -15,6 +17,7 @@ export type {
   SectionItem,
   SiteConfig,
   SocialLinkItem,
+  FooterVisibilityConfig,
   SiteQuote,
   StatItem,
   ProjectIconName,
@@ -44,6 +47,38 @@ export const navItems: NavItem[] = [
   { href: '/timeline', label: '时间轴' },
   { href: '/projects', label: '项目' },
 ];
+
+export const aboutPage = {
+  title: '关于我',
+  description: '关于 Tao、正在做的事情，以及这个数字花园为什么存在。',
+  introHeading: '你好，我是 Tao',
+  introLabel: 'About Me',
+  intro: [
+    '我是 Tao，主要做前端开发，也持续关注 AI 动态，目前专注于 Agent 应用开发。',
+    '这个站点更像一块缓慢生长的记录地：一部分是技术写作，一部分是 AI 时代下的角色调整，还有一部分记录生活与思考的边角。',
+    '我偏爱安静、低噪声、能长期维护的产品体验，所以这里的页面、内容组织和视觉风格，也都会朝着这个方向持续打磨。',
+  ],
+  sections: [
+    {
+      label: 'In Progress',
+      iconKey: 'pencil',
+      heading: '现在在做什么',
+      body: '持续整理个人作品站，补齐写作流、内容索引、部署体验和移动端阅读细节；同时也在持续的打磨 Agent 应用，拥抱这个快速发展的 AI 时代，在这片浪潮中稳住身形。',
+    },
+    {
+      label: 'Focus',
+      iconKey: 'signpost',
+      heading: '关注的方向',
+      body: '前端工程与交互体验：构建清晰、稳定、可维护的 Web 应用。AI Agent 应用开发：探索大模型、工具调用、工作流和用户界面的结合方式。个人产品与效率工具：把自己的想法做成可使用、可迭代、可展示的真实项目。',
+    },
+    {
+      label: 'Why This Site',
+      iconKey: 'bubbles',
+      heading: '网站的初衷',
+      body: '想给自己的经验、想法和阶段性作品留一个耐读、可检索、能慢慢变厚的地方，而不是让它们散落在聊天记录和临时笔记里。',
+    },
+  ],
+};
 
 // export const stats: StatItem[] = [
 //   { label: '篇', value: 12 },
@@ -91,8 +126,12 @@ export const moments: MomentItem[] = [
 ];
 
 export const socialLinks: SocialLinkItem[] = [
-  { label: 'GitHub', href: 'https://github.com', color: '#6e7681' },
-  { label: 'X', href: 'https://x.com', color: '#111827' },
-  { label: 'Mail', href: `mailto:${site.email}`, color: '#d44638' },
-  { label: 'RSS', href: '/rss.xml', color: '#e88b18' },
+  { label: '关于我', href: '/about', color: '#587d54', icon: UserRound },
+  { label: 'GitHub', href: 'https://github.com/2362446788', color: '#6e7681', icon: GithubMark },
+  { label: '写邮件', href: `mailto:${site.email}`, color: '#d44638', icon: Mail },
 ];
+
+export const footerVisibilityConfig: FooterVisibilityConfig = {
+  exact: [],
+  prefix: [],
+};

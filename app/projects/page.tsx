@@ -14,7 +14,7 @@ export default function ProjectsPage() {
   return (
     <>
       <SiteChrome />
-      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-[760px] flex-col px-4 pb-32 pt-24 sm:px-6 md:pt-28 lg:px-8">
+      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-[760px] flex-col px-4 pb-16 pt-24 sm:px-6 md:pt-28 lg:px-8">
         <IndexPageHero
           icon={Sprout}
           title="生长的世界"

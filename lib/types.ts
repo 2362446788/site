@@ -1,3 +1,4 @@
+import type { ComponentType, SVGProps } from 'react';
 import type { LucideIcon } from 'lucide-react';
 
 export type SiteQuote = {
@@ -50,9 +51,15 @@ export type MomentItem = {
 };
 
 export type SocialLinkItem = {
+  icon: ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
   label: string;
   href: string;
   color: string;
+};
+
+export type FooterVisibilityConfig = {
+  exact: string[];
+  prefix: string[];
 };
 
 export type PostMeta = {

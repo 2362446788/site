@@ -6,6 +6,7 @@ import {
   Noto_Sans_SC,
   Noto_Serif_SC,
 } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
 import { getSiteUrlObject } from "@/lib/site";
 import { Providers } from "./providers";
 import "./globals.css";
@@ -85,8 +86,13 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="bg-ui-page text-ui-primary font-sans antialiased">
-        <Providers>{children}</Providers>
+      <body className="bg-ui-page font-sans text-ui-primary antialiased">
+        <Providers>
+          <div className="flex min-h-screen flex-col">
+            <div className="flex-1">{children}</div>
+            <SiteFooter />
+          </div>
+        </Providers>
       </body>
     </html>
   );

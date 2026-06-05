@@ -214,7 +214,7 @@ export default async function PostDetailPage({ params }: PostPageProps) {
     <>
       <SiteChrome tocItems={tocItems} />
       <DesktopToc items={tocItems} />
-      <main className="mx-auto min-h-screen w-full max-w-[760px] px-4 pb-32 pt-20 sm:px-6 md:pt-28 lg:px-8">
+      <main className="mx-auto min-h-screen w-full max-w-[760px] px-4 pb-16 pt-20 sm:px-6 md:pt-28 lg:px-8">
           <Link
             href="/posts"
             className="mb-10 inline-flex items-center gap-2 font-mono text-xs text-ui-muted transition hover:text-ui-brand"

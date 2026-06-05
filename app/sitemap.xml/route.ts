@@ -4,7 +4,9 @@ import { createSiteUrl } from "@/lib/site";
 
 export function GET() {
   const posts = getAllPosts();
-  const staticUrls = navItems.map((item) => createSiteUrl(item.href));
+  const staticUrls = [...navItems.map((item) => item.href), "/about"].map((href) =>
+    createSiteUrl(href)
+  );
   const staticUrlItems = staticUrls.map((url) => `<url><loc>${url}</loc></url>`);
   const postUrlItems = posts.map(
     (post) => `<url><loc>${createSiteUrl(`/posts/${post.id}`)}</loc><lastmod>${post.updatedAt}</lastmod></url>`

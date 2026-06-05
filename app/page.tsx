@@ -9,6 +9,7 @@ import { SiteChrome } from "@/components/site-chrome";
 import {
   moments,
   projects,
+  socialLinks,
   sections,
   site,
 } from "@/lib/content";
@@ -20,7 +21,7 @@ export default function Home() {
   return (
     <>
       <SiteChrome />
-      <main className="mx-auto min-h-screen w-full max-w-3xl px-4 pb-32 pt-16 md:px-8 md:pt-24">
+      <main className="mx-auto min-h-screen w-full max-w-3xl px-4 pb-16 pt-16 md:px-8 md:pt-24">
         <section className="flex min-h-[430px] flex-col items-center justify-center text-center">
           <div className="size-24 overflow-hidden rounded-full border border-ui-subtle bg-ui-content p-1 shadow-ui-subtle">
             <Image
@@ -75,27 +76,41 @@ export default function Home() {
             ))}
           </div> */}
 
-          {/* <div className="flex flex-wrap items-center justify-center gap-4 text-ui-muted">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-ui-muted">
             {socialLinks.map((item) => {
-              const Icon = socialIcons[item.label as keyof typeof socialIcons];
+              const Icon = item.icon;
+              const isInternal = item.href.startsWith("/");
+
               return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  aria-label={item.label}
-                  style={{ "--hover-color": item.color } as CSSProperties}
-                  className="group relative block rounded-full border border-ui-subtle p-2 transition duration-300 hover:border-(--hover-color) hover:text-(--hover-color) hover:shadow-ui-subtle"
-                >
-                  <span className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -translate-y-[115%] rounded-xl bg-ui-content px-4 py-2 text-sm text-ui-secondary opacity-0 shadow-ui-subtle transition-all duration-300 group-hover:-translate-y-[135%] group-hover:opacity-100">
+                <span key={item.label} className="group relative block">
+                  <span className="pointer-events-none absolute left-1/2 top-0 z-10 min-w-max whitespace-nowrap rounded-xl bg-ui-content px-4 py-2 text-sm text-ui-secondary opacity-0 shadow-ui-subtle transition-all duration-300 -translate-x-1/2 -translate-y-[115%] group-hover:-translate-y-[135%] group-hover:opacity-100">
                     {item.label}
                   </span>
-                  <Icon size={20} />
-                </a>
+                  {isInternal ? (
+                    <Link
+                      href={item.href}
+                      aria-label={item.label}
+                      style={{ "--hover-color": item.color } as CSSProperties}
+                      className="block rounded-full border border-ui-subtle p-2 transition duration-300 hover:border-(--hover-color) hover:text-(--hover-color) hover:shadow-ui-subtle"
+                    >
+                      <Icon size={20} />
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.label}
+                      style={{ "--hover-color": item.color } as CSSProperties}
+                      className="block rounded-full border border-ui-subtle p-2 transition duration-300 hover:border-(--hover-color) hover:text-(--hover-color) hover:shadow-ui-subtle"
+                    >
+                      <Icon size={20} />
+                    </a>
+                  )}
+                </span>
               );
             })}
-          </div> */}
+          </div>
         </section>
 
         <Divider />
@@ -200,29 +215,6 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="mt-18 flex flex-col items-center justify-between gap-4 border-t border-ui-subtle pt-6 font-mono text-xs text-ui-muted md:flex-row">
-          <div className="flex items-center gap-2">
-            <span>© 2026</span>
-            <span>Powered by</span>
-            <a
-              href="https://nextjs.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-ui-secondary"
-            >
-              Next.js
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <Link href="/rss.xml" className="transition hover:text-ui-secondary">
-              RSS 订阅
-            </Link>
-            <span className="opacity-50">·</span>
-            <Link href="/sitemap.xml" className="transition hover:text-ui-secondary">
-              站点地图
-            </Link>
-          </div>
-        </footer>
       </main>
     </>
   );
