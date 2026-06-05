@@ -6,6 +6,7 @@ import {
   Noto_Sans_SC,
   Noto_Serif_SC,
 } from "next/font/google";
+import { getSiteUrlObject } from "@/lib/site";
 import { Providers } from "./providers";
 import "./globals.css";
 
@@ -42,7 +43,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tao-site.local"),
+  metadataBase: getSiteUrlObject(),
   title: {
     default: "Tao Site",
     template: "%s - Tao Site",

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
 import { useSiteTheme } from "@/app/providers";
@@ -39,9 +40,10 @@ export function SiteChrome({ tocItems = [] }: SiteChromeProps) {
               item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
 
             return (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
+                aria-current={active ? "page" : undefined}
                 className={`min-w-0 flex-1 rounded-full px-2.5 py-2 text-center text-[13px] transition md:text-sm ${
                   active
                     ? "bg-ui-active text-ui-primary shadow-ui-subtle"
@@ -49,7 +51,7 @@ export function SiteChrome({ tocItems = [] }: SiteChromeProps) {
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             );
           })}
         </div>

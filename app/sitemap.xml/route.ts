@@ -1,14 +1,13 @@
 import { navItems } from "@/lib/content";
 import { getAllPosts } from "@/lib/posts";
+import { createSiteUrl } from "@/lib/site";
 
 export function GET() {
-  const baseUrl = "https://tao-site.local";
   const posts = getAllPosts();
-  const staticUrls = navItems.map((item) => `${baseUrl}${item.href}`);
+  const staticUrls = navItems.map((item) => createSiteUrl(item.href));
   const staticUrlItems = staticUrls.map((url) => `<url><loc>${url}</loc></url>`);
   const postUrlItems = posts.map(
-    (post) =>
-      `<url><loc>${baseUrl}/posts/${post.id}</loc><lastmod>${post.updatedAt}</lastmod></url>`
+    (post) => `<url><loc>${createSiteUrl(`/posts/${post.id}`)}</loc><lastmod>${post.updatedAt}</lastmod></url>`
   );
   const urls = [...staticUrlItems, ...postUrlItems].join("");
 

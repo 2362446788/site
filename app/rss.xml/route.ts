@@ -1,5 +1,6 @@
 import { site } from "@/lib/content";
 import { getAllPosts } from "@/lib/posts";
+import { createSiteUrl, getSiteUrl } from "@/lib/site";
 
 export function GET() {
   const posts = getAllPosts();
@@ -8,8 +9,8 @@ export function GET() {
       (post) => `
         <item>
           <title><![CDATA[${post.title}]]></title>
-          <link>https://tao-site.local/posts/${post.id}</link>
-          <guid>https://tao-site.local/posts/${post.id}</guid>
+          <link>${createSiteUrl(`/posts/${post.id}`)}</link>
+          <guid>${createSiteUrl(`/posts/${post.id}`)}</guid>
           <pubDate>${new Date(`${post.publishedAt}T00:00:00`).toUTCString()}</pubDate>
           <description><![CDATA[${post.excerpt}]]></description>
         </item>`
@@ -20,7 +21,7 @@ export function GET() {
     <rss version="2.0">
       <channel>
         <title>${site.title}</title>
-        <link>https://tao-site.local</link>
+        <link>${getSiteUrl()}</link>
         <description>${site.description}</description>
         ${items}
       </channel>

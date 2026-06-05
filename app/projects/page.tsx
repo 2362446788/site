@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sprout } from "lucide-react";
+import { IndexPageHero } from "@/components/index-page-hero";
 import { ProjectCard } from "@/components/project-card";
 import { SiteChrome } from "@/components/site-chrome";
 import { projects } from "@/lib/content";
@@ -13,19 +14,12 @@ export default function ProjectsPage() {
   return (
     <>
       <SiteChrome />
-      <main className="mx-auto min-h-screen w-full max-w-3xl px-4 pb-32 pt-20 md:px-8 md:pt-28">
-        <header className="mb-10">
-          <div className="mb-4 flex items-center gap-3 text-ui-brand">
-            <Sprout size={22} />
-            <span className="font-mono text-xs uppercase tracking-[0.22em] text-ui-muted">
-              Projects
-            </span>
-          </div>
-          <h1 className="font-serif text-4xl text-ui-primary md:text-5xl">生长的世界</h1>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ui-secondary md:text-base">
-            一些正在生长的工具、站点、游戏和前端实验。先让它们小而稳定，再逐步扩展。
-          </p>
-        </header>
+      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-[760px] flex-col px-4 pb-32 pt-24 sm:px-6 md:pt-28 lg:px-8">
+        <IndexPageHero
+          icon={Sprout}
+          title="生长的世界"
+          description="一些正在生长的工具、站点、游戏和前端实验。先让它们小而稳定，再逐步扩展。"
+        />
 
         <div className="grid gap-5">
           {projects.map((project) => (

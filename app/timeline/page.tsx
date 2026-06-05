@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MapPin, Milestone } from "lucide-react";
+import { IndexPageHero } from "@/components/index-page-hero";
 import { SiteChrome } from "@/components/site-chrome";
 import { moments } from "@/lib/content";
 
@@ -12,19 +13,12 @@ export default function TimelinePage() {
   return (
     <>
       <SiteChrome />
-      <main className="mx-auto min-h-screen w-full max-w-3xl px-4 pb-32 pt-20 md:px-8 md:pt-28">
-        <header className="mb-10">
-          <div className="mb-4 flex items-center gap-3 text-ui-brand">
-            <Milestone size={22} />
-            <span className="font-mono text-xs uppercase tracking-[0.22em] text-ui-muted">
-              Timeline
-            </span>
-          </div>
-          <h1 className="font-serif text-4xl text-ui-primary md:text-5xl">林间回音</h1>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ui-secondary md:text-base">
-            不完整地记录每天推进的一点点东西，保留还没变成文章的想法。
-          </p>
-        </header>
+      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-[760px] flex-col px-4 pb-32 pt-24 sm:px-6 md:pt-28 lg:px-8">
+        <IndexPageHero
+          icon={Milestone}
+          title="林间回音"
+          description="不完整地记录每天推进的一点点东西，保留还没变成文章的想法。"
+        />
 
         <div className="relative space-y-10 border-l border-dashed border-ui-strong pl-6">
           {moments.map((moment) => (
