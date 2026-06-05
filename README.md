@@ -66,6 +66,28 @@ pnpm format
 pnpm format:check
 ```
 
+## 站点域名配置
+
+站点基地址统一由 `lib/site.ts` 提供，`metadataBase`、`RSS`、`sitemap` 都会读取这份配置。
+
+部署时建议通过环境变量设置：
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
+
+也兼容：
+
+```bash
+SITE_URL=https://your-domain.com
+```
+
+说明：
+
+- 建议填写完整 `https://` 地址
+- 可以不带末尾 `/`
+- 如果未设置或格式不合法，会回退到默认值 `https://xzztao.com`
+
 ## 目录结构
 
 ```text
@@ -81,10 +103,12 @@ utils/        小型工具函数
 关键文件：
 
 - `app/page.tsx`：首页
+- `app/about/page.tsx`：关于我页面
 - `app/posts/page.tsx`：文稿列表页
 - `app/posts/[slug]/page.tsx`：文稿详情页
 - `lib/posts.ts`：Markdown 文章读取与文章元数据计算
 - `lib/content.ts`：站点配置、首页项目/时间轴等静态内容
+- `components/site-footer.tsx`：全局页脚与隐藏规则匹配
 - `lib/toc.ts`：正文目录提取
 - `lib/types.ts`：跨模块复用的业务类型
 - `scripts/new-post.mjs`：新建文章脚本
@@ -258,6 +282,15 @@ Markdown 中使用绝对路径引用：
 - `###` 作为小节
 
 ## RSS 与 Sitemap
+
+## 页脚显示规则
+
+全局页脚统一在 `components/site-footer.tsx` 渲染，显示与隐藏规则在 `lib/content.ts` 的 `footerVisibilityConfig` 中配置。
+
+支持两种匹配模式：
+
+- `exact`：完全匹配，例如 `"/about"`
+- `prefix`：前缀模糊匹配，例如 `"/posts"` 会匹配 `/posts/123`
 
 项目内置：
 
